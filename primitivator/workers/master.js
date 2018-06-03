@@ -10,7 +10,7 @@ const setworkers = function (files){
 		let filepath = join(__dirname,"../pending/"+file);
 		if(!workingon.find(file)){
 			const worker = fork("./worker.js");
-			worker.send(filepath, config);
+			worker.send(file, config);
 			worker.on("message", (message) => {
 				if(message==="done"){
 					worker.kill();
