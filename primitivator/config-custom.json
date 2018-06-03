@@ -4,8 +4,8 @@
   "fill": "auto",
   "mutateAlpha": true,
   "mutations": 40,
-  "shapeTypes": "(3)[ƒ, ƒ, ƒ]",
+  "shapeTypes": [90,90,90],
   "shapes": 303,
   "steps": 206,
-  "viewSize": 323
+  "viewSize": 320
 }

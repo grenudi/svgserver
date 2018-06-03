@@ -6,12 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./launcher.js",
-    "dev": "nodemon ./launcher.js && nodemon ./primitivator/workers/master.js"
+    "dev": "nodemon ./launcher.js && nodemon ./primitivator/workers/master.js",
+    "dev2": "nodemon ./primitivator/workers/master.js",
+    "dev3": "nodemon ./primitivator/workers/worker.js"
   },
   "author": "grenudi",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
     "randomstring": "^1.1.5"
   },
   "devDependencies": {

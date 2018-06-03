@@ -1,5 +1,5 @@
 const Fs = require("fs");
-const {fork} = require("child_worker");
+const {fork} = require("child_process");
 const {join} = require("path");
 
 let workingon = [];
@@ -26,7 +26,7 @@ const setworkers = function (files){
 };
 
 //watch on directory change
-Fs.watch("../pending", (eventType, filename) => {
+Fs.watch(join(__dirname,"../pending"), (eventType, filename) => {
 	switch(eventType){
 	case "change":
 		Fs.readdir("../pending", (err, files)=>{
@@ -41,14 +41,16 @@ Fs.watch("../pending", (eventType, filename) => {
 		console.log(filename);
 		// Prints: <Buffer ...>
 	}
+	console.log("Emmited: pending");
 });
 
 //watch for config change
-Fs.watch("../config-custom.json",(eventType)=>{
+Fs.watch(join(__dirname,"../config-custom.json"),(eventType)=>{
 	if(eventType==="change"){
-		Fs.readFile("../config-custom.json","utf8",(err,data)=>{
-			if(err) console.error("ERROR! cannot read config-custom.json");
+		Fs.readFile(join(__dirname,"../config-custom.json"),"utf8",(err,data)=>{
+			if(err) console.error("ERROR! cannot read config-custom.json\n",err);
 			else config = JSON.parse(data);
 		});
 	}
+	console.log("Emmited: config-custom.js");
 });

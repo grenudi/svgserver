@@ -1,6 +1,7 @@
 let que = [];//object's array
 const randstr = require("randomstring");
-const config = require("./config.js");
+const config = require("../config.js");
+const {join} = require("path");
 
 const upload = (req,res)=>{
 	if (!req.files)
@@ -8,7 +9,7 @@ const upload = (req,res)=>{
 	// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
 	let file = req.files.sampleFile;
 	// Use the mv() method to place the file somewhere on your server
-	file.mv(Path.join(__dirname,"../primitivator/pending/")+file.name, function(err) {
+	file.mv(join(__dirname,"../../primitivator/pending/")+file.name, function(err) {
 		if (err)
 			return res.status(500).send(err);
 		const token = randstr.generate(10);
@@ -19,8 +20,8 @@ const upload = (req,res)=>{
 
 const download = (req,res)=>{
 	const file = que.find(x=>x.token === req.query.secret);
-	if(!file) res.statusCode(404).send("i don't have your file");
-	else res.sendFile("../../primitivator/done/"+file.name);
+	if(!file) res.status(404).send("i don't have your file");
+	else res.sendFile(join(__dirname,"../../primitivator/done/")+file.name);
 };
 
 module.exports = {
