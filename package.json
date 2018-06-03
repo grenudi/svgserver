@@ -1,0 +1,16 @@
+{
+  "name": "svgserver",
+  "version": "1.0.0",
+  "description": "server to convert image to svg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./launcher.js",
+    "dev": "nodemon ./launcher.js && nodemon ./primitivator/workers/master.js"
+  },
+  "author": "grenudi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
